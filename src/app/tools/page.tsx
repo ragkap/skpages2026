@@ -3,16 +3,6 @@ import { useState } from 'react';
 import styles from './tools.module.css';
 import DiscussionsWidget from '@/components/ui/DiscussionsWidget';
 
-const filterTabs = [
-  { id: 'all', label: 'All tools' },
-  { id: 'screeners', label: 'Screeners & Comparisons' },
-  { id: 'markets', label: 'Markets' },
-  { id: 'commodities', label: 'Commodities' },
-  { id: 'event-driven', label: 'Event-Driven' },
-  { id: 'charting', label: 'Charting' },
-  { id: 'providers', label: 'For Insight Providers' },
-  { id: 'partners', label: 'For Channel Partners' },
-];
 
 interface Tool {
   id: string;

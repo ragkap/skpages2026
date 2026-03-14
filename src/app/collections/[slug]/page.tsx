@@ -35,28 +35,6 @@ const relatedCollections = [
   { id: 'rc2', name: 'Event-Driven', color: '#5a6b7c', emoji: '⚡', following: false },
 ];
 
-const sideDiscussions = [
-  {
-    id: 'sd1',
-    entity: 'Samsung Electronics',
-    title: 'An Update of Our 2025 High Conviction Pi…',
-    author: { initials: 'DK', name: 'Douglas Kim', gradientFrom: '#059669', gradientTo: '#34d399' },
-    authorSpec: 'Korea/Asia, Events, IPOs, Douglas Re…',
-    body: 'Samsung Electronics and SK Hynix up 15.8% and 11.5%, respectively so far in',
-    likes: 1,
-    time: '06 Jan 2026 17:34',
-  },
-  {
-    id: 'sd2',
-    entity: 'ZIM Integrated Shipping Services',
-    title: 'Short ZIM Against Long Position in China …',
-    author: { initials: 'DH', name: 'Daniel Hellberg', gradientFrom: '#3b82f6', gradientTo: '#8b5cf6' },
-    authorSpec: 'Asian Equities Analyst, Logistics & Tr…',
-    body: 'With a few hours of US trading left in 2025, this pair is up about 4% excluding',
-    likes: 0,
-    time: '31 Dec 2025 23:43',
-  },
-];
 
 // Use a subset of feed items as collection insights
 const collectionInsights = feedItems.slice(0, 8).map((item, i) => ({
