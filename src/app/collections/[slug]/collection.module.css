@@ -36,11 +36,14 @@
   overflow: hidden;
 }
 
-/* ── Hero ────────────────────────────────────────── */
+/* ── Hero — compact single row (matches company page) ── */
 .hero {
+  height: 52px;
+  min-height: 52px;
   display: flex;
   align-items: center;
-  gap: 0;
+  gap: 10px;
+  padding: 0 14px;
   background: var(--bg-card);
   border-bottom: 1px solid var(--border);
   flex-shrink: 0;
@@ -48,26 +51,21 @@
 }
 
 .heroCover {
-  width: 160px;
-  min-width: 160px;
-  height: 120px;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 
-.heroBody {
-  flex: 1;
-  min-width: 0;
-  padding: 18px 20px;
+.heroInfo {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.heroTop {
-  margin-bottom: 2px;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .collectionBadge {
@@ -75,37 +73,73 @@
   font-weight: 700;
   color: var(--text-muted);
   border: 1px solid var(--border);
-  border-radius: 3px;
-  padding: 2px 6px;
-  letter-spacing: 0.6px;
+  border-radius: 2px;
+  padding: 1px 5px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
+  flex-shrink: 0;
 }
 
 .heroTitle {
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 600;
   color: var(--text-primary);
-  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .heroDesc {
-  font-size: 13px;
+  font-size: 11px;
   color: var(--text-muted);
-  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Inline stats (same pattern as company hero-stats-bar) */
+.heroStats {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 4px;
+}
+
+.heroStat {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.heroStatNum {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.heroStatLabel {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.heroDivider {
+  color: var(--border);
+  font-size: 14px;
+  flex-shrink: 0;
 }
 
 .heroActions {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 0 20px;
+  margin-left: auto;
   flex-shrink: 0;
 }
 
 .followBtn {
-  padding: 7px 18px;
+  padding: 4px 14px;
   border-radius: 20px;
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 500;
   cursor: pointer;
   border: 1px solid var(--border);
@@ -128,9 +162,9 @@
 }
 
 .shareBtn {
-  padding: 7px 16px;
+  padding: 4px 12px;
   border-radius: 20px;
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 500;
   cursor: pointer;
   border: 1px solid var(--border);
@@ -355,14 +389,22 @@
 
 /* ── Right sidebar ───────────────────────────────── */
 .rhs {
-  width: 280px;
-  min-width: 280px;
+  display: flex;
+  flex-direction: row;
   border-left: 1px solid var(--border);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* Widgets column (Providers + Collections) */
+.widgetsCol {
+  width: 220px;
+  min-width: 220px;
   background: var(--bg-card);
+  border-left: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  flex-shrink: 0;
 }
 
 .rhsPanel {

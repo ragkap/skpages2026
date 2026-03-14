@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import styles from './collections.module.css';
+import DiscussionsWidget from '@/components/ui/DiscussionsWidget';
 
 const sidebarNavItems = [
   { id: 'for-me', label: 'For Me' },
@@ -63,7 +64,8 @@ export default function CollectionsPage() {
         ))}
       </aside>
 
-      {/* ─── MAIN CONTENT ─── */}
+      {/* ─── MAIN CONTENT + RHS ─── */}
+      <div className={styles.body}>
       <div className={styles.content}>
         {/* Top toggle tabs */}
         <div className={styles.topTabs}>
@@ -125,6 +127,8 @@ export default function CollectionsPage() {
             ))}
           </div>
         </div>
+      </div>
+      <DiscussionsWidget bordered />
       </div>
     </div>
   );

@@ -119,10 +119,10 @@ html, body {
 .nav-link.active {
   color: #ffffff;
   background: transparent;
-  border-bottom: 2px solid rgba(255,255,255,0.9);
   border-radius: 0;
+  font-weight: 700;
+  border-bottom: 2.5px solid #ffffff;
   padding-bottom: 3px;
-  font-weight: 600;
 }
 
 .nav-link-more {
@@ -142,10 +142,11 @@ html, body {
   height: 28px;
   width: 200px;
   margin: 0 12px;
-  transition: border-color 0.15s, background 0.15s;
+  transition: width 0.25s ease, border-color 0.15s, background 0.15s;
 }
 
 .nav-search:focus-within {
+  width: 320px;
   border-color: rgba(255,255,255,0.6);
   background: rgba(0,0,0,0.2);
 }
@@ -1066,25 +1067,19 @@ html, body {
 }
 
 .insight-type {
-  font-size: 9.5px;
-  font-weight: 700;
+  font-size: 9px;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 2px 6px;
-  border-radius: 3px;
+  letter-spacing: 0.4px;
   white-space: nowrap;
 }
 
 .insight-type.research {
-  color: var(--accent);
-  background: var(--accent-dim);
-  border: 1px solid rgba(0,179,134,0.2);
+  color: var(--text-muted);
 }
 
 .insight-type.filing {
-  color: var(--amber);
-  background: var(--amber-dim);
-  border: 1px solid rgba(245,158,11,0.2);
+  color: var(--text-muted);
 }
 
 .insight-date {

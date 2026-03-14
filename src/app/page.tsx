@@ -1,15 +1,9 @@
 import Link from 'next/link';
 import { feedItems } from '@/lib/mockData/feed';
-import { watchlistEntities } from '@/lib/mockData/watchlist';
 import FeedItem from '@/components/feed/FeedItem';
 import PanelHeader from '@/components/ui/PanelHeader';
+import DiscussionsWidget from '@/components/ui/DiscussionsWidget';
 
-const discItems = [
-  { id: 'd1', companyLabel: 'SIA SP', title: 'SIA cargo outlook post-CNY', preview: 'Air cargo demand has softened post-Chinese New Year...', author: { initials: 'AK', name: 'Anil Kumar', gradientFrom: '#00b386', gradientTo: '#6366f1' }, time: '4h' },
-  { id: 'd2', companyLabel: '005930 KS', title: 'Samsung HBM3E delay implications', preview: 'The qualification slip means Q2 guidance will need revising...', author: { initials: 'NK', name: 'Nader Khouri', gradientFrom: '#3b82f6', gradientTo: '#8b5cf6' }, time: '6h' },
-  { id: 'd3', companyLabel: 'DBS SP', title: 'DBS dividend upgrade — when?', preview: 'Q4 beat gives the board cover to raise the interim dividend...', author: { initials: 'SP', name: 'Sunil Prakash', gradientFrom: '#10b981', gradientTo: '#00c896' }, time: '8h' },
-  { id: 'd4', companyLabel: '17 HK', title: 'New World — covenant breach risk?', preview: 'Debt-to-equity now at 1.8x. The question is whether lenders...', author: { initials: 'DB', name: 'David Blennerhassett', gradientFrom: '#3b82f6', gradientTo: '#6366f1' }, time: '12h' },
-];
 
 const followSuggestions = [
   { initials: 'DB', name: 'David Blennerhassett', spec: 'Event-Driven · HK/China', gradientFrom: '#3b82f6', gradientTo: '#6366f1' },
@@ -81,28 +75,6 @@ export default function DashboardPage() {
             Browse
           </a>
         </div>
-        <div className="sidebar-divider" />
-        {/* Watchlist widget */}
-        <div style={{ flex: 1, minHeight: 0, overflowY: 'auto', padding: 8 }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 4px', marginBottom: 6 }}>
-            <span style={{ fontSize: '9.5px', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.8px' }}>My Watchlist</span>
-            <div style={{ width: 16, height: 16, borderRadius: 3, border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'var(--text-muted)' }}>
-              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 5v14M5 12h14"/></svg>
-            </div>
-          </div>
-          {watchlistEntities.map(e => (
-            <div key={e.id} style={{ display: 'flex', alignItems: 'center', padding: '5px 6px', borderRadius: 4, cursor: 'pointer', gap: 6, marginBottom: 2 }}>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontSize: '11.5px', fontWeight: 600, color: 'var(--text-primary)', fontFamily: 'JetBrains Mono,monospace' }}>{e.ticker}</div>
-                <div style={{ fontSize: '9.5px', color: 'var(--text-muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{e.name}</div>
-              </div>
-              <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                <div style={{ fontSize: '11.5px', fontWeight: 500, fontFamily: 'JetBrains Mono,monospace', color: 'var(--text-primary)' }}>{e.price}</div>
-                <div style={{ fontSize: '9.5px', fontFamily: 'JetBrains Mono,monospace', fontWeight: 500, color: e.direction === 'up' ? 'var(--bullish)' : 'var(--bearish)' }}>{e.change}</div>
-              </div>
-            </div>
-          ))}
-        </div>
       </aside>
 
       {/* ─── CENTER COLUMN ─── */}
@@ -137,35 +109,7 @@ export default function DashboardPage() {
 
       {/* ─── RIGHT SIDEBAR ─── */}
       <aside style={{ display: 'flex', flexDirection: 'row', borderLeft: '1px solid var(--border)', overflow: 'hidden' }}>
-        {/* Discussions panel */}
-        <div style={{ width: 300, minWidth: 300, background: 'var(--bg-card)', borderRight: '1px solid var(--border)', display: 'flex', flexDirection: 'column', overflow: 'hidden', order: 1 }}>
-          <PanelHeader title="Discussions" tabs={['For Me', 'All']} activeTab="For Me" linkText="View All" linkHref="/discussions" />
-          <div style={{ flex: 1, minHeight: 0, overflowY: 'auto' }}>
-            {discItems.map(d => (
-              <div key={d.id} style={{ padding: '9px 12px', borderBottom: '1px solid var(--border)', cursor: 'pointer', transition: 'background 0.13s' }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 7, marginBottom: 4 }}>
-                  <div style={{ width: 3, height: 3, borderRadius: '50%', background: 'var(--accent)', marginTop: 5, flexShrink: 0 }} />
-                  <span style={{ fontSize: 11, fontWeight: 600, color: 'var(--text-primary)', flex: 1 }}>{d.companyLabel}</span>
-                </div>
-                <div style={{ fontSize: '10.5px', color: 'var(--text-secondary)', display: '-webkit-box', WebkitLineClamp: 1, WebkitBoxOrient: 'vertical', overflow: 'hidden', marginBottom: 4 }}>{d.title}</div>
-                <div style={{ fontSize: '10.5px', color: 'var(--text-muted)', fontStyle: 'italic', display: '-webkit-box', WebkitLineClamp: 1, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{d.preview}</div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 4 }}>
-                  <div style={{ width: 14, height: 14, borderRadius: '50%', background: `linear-gradient(135deg, ${d.author.gradientFrom}, ${d.author.gradientTo})`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '6.5px', fontWeight: 700, color: '#fff' }}>{d.author.initials}</div>
-                  <span style={{ fontSize: 10, fontWeight: 500, color: 'var(--text-muted)' }}>{d.author.name}</span>
-                  <span style={{ marginLeft: 'auto', fontSize: '9.5px', color: 'var(--text-muted)', fontFamily: 'JetBrains Mono,monospace' }}>{d.time}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-          {/* Compose box */}
-          <div style={{ borderTop: '2px solid var(--accent)', padding: '10px 12px 12px', background: '#0f1a24', flexShrink: 0, boxShadow: '0 -4px 16px rgba(0,0,0,0.3)' }}>
-            <div style={{ fontSize: '9.5px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.6px', color: 'var(--accent)', marginBottom: 6 }}>Post a Discussion</div>
-            <textarea placeholder="Share your market insight or question…" style={{ width: '100%', background: '#162030', border: '1px solid rgba(0,179,134,0.3)', borderRadius: 6, color: 'var(--text-primary)', fontSize: 12, fontFamily: 'Inter,sans-serif', padding: '9px 11px', resize: 'none', outline: 'none', boxSizing: 'border-box', lineHeight: 1.5, minHeight: 56 }} />
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', marginTop: 8 }}>
-              <button style={{ background: 'var(--accent)', color: '#fff', border: 'none', borderRadius: 5, fontSize: 11, fontWeight: 700, padding: '6px 16px', cursor: 'pointer', boxShadow: '0 2px 8px rgba(0,179,134,0.3)' }}>Post</button>
-            </div>
-          </div>
-        </div>
+        <DiscussionsWidget />
 
         {/* Widgets panel */}
         <div style={{ width: 220, minWidth: 220, background: 'var(--bg-card)', borderLeft: '1px solid var(--border)', display: 'flex', flexDirection: 'column', overflow: 'hidden', order: 2 }}>

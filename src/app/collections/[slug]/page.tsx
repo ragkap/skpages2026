@@ -4,6 +4,7 @@ import { feedItems } from '@/lib/mockData/feed';
 import FeedItem from '@/components/feed/FeedItem';
 // import Avatar from '@/components/ui/Avatar';
 import styles from './collection.module.css';
+import DiscussionsWidget from '@/components/ui/DiscussionsWidget';
 
 // Mock collection data
 const collectionMeta = {
@@ -96,18 +97,38 @@ export default function CollectionDetailPage() {
 
       {/* ─── MAIN CONTENT ─── */}
       <div className={styles.content}>
-        {/* ── Hero banner ── */}
+        {/* ── Hero banner — compact single row like company page ── */}
         <div className={styles.hero}>
+          {/* Cover icon */}
           <div className={styles.heroCover} style={{ background: collectionMeta.color }}>
-            <span style={{ fontSize: 40 }}>{collectionMeta.emoji}</span>
+            <span style={{ fontSize: 16 }}>{collectionMeta.emoji}</span>
           </div>
-          <div className={styles.heroBody}>
-            <div className={styles.heroTop}>
-              <span className={styles.collectionBadge}>COLLECTION</span>
+          {/* Name + desc */}
+          <div className={styles.heroInfo}>
+            <span className={styles.heroTitle}>{collectionMeta.name}</span>
+            <span className={styles.heroDesc}>{collectionMeta.desc}</span>
+          </div>
+          {/* Stats inline */}
+          <div className={styles.heroStats}>
+            <span className={styles.heroDivider}>|</span>
+            <div className={styles.heroStat}>
+              <span className={styles.heroStatNum}>{collectionMeta.insightCount}</span>
+              <span className={styles.heroStatLabel}>Insights</span>
             </div>
-            <div className={styles.heroTitle}>{collectionMeta.name}</div>
-            <div className={styles.heroDesc}>{collectionMeta.desc}</div>
+            <span className={styles.heroDivider}>|</span>
+            <div className={styles.heroStat}>
+              <span className={styles.heroStatNum}>{collectionMeta.views}</span>
+              <span className={styles.heroStatLabel}>Views</span>
+            </div>
+            <span className={styles.heroDivider}>|</span>
+            <div className={styles.heroStat}>
+              <span className={styles.heroStatNum}>{collectionMeta.followers}</span>
+              <span className={styles.heroStatLabel}>Followers</span>
+            </div>
+            <span className={styles.heroDivider}>|</span>
+            <span className={styles.collectionBadge}>COLLECTION</span>
           </div>
+          {/* Actions */}
           <div className={styles.heroActions}>
             <button
               className={`${styles.followBtn} ${following ? styles.followBtnActive : ''}`}
@@ -116,24 +137,6 @@ export default function CollectionDetailPage() {
               {following ? 'Following' : 'Follow'}
             </button>
             <button className={styles.shareBtn}>Share</button>
-          </div>
-        </div>
-
-        {/* ── Stats bar ── */}
-        <div className={styles.statsBar}>
-          <div className={styles.stat}>
-            <span className={styles.statNum}>{collectionMeta.insightCount}</span>
-            <span className={styles.statLabel}>Insights</span>
-          </div>
-          <div className={styles.statDivider} />
-          <div className={styles.stat}>
-            <span className={styles.statNum}>{collectionMeta.views}</span>
-            <span className={styles.statLabel}>Views</span>
-          </div>
-          <div className={styles.statDivider} />
-          <div className={styles.stat}>
-            <span className={styles.statNum}>{collectionMeta.followers}</span>
-            <span className={styles.statLabel}>Followers</span>
           </div>
         </div>
 
@@ -215,46 +218,11 @@ export default function CollectionDetailPage() {
 
           {/* ─── RIGHT SIDEBAR ─── */}
           <aside className={styles.rhs}>
-            {/* Discussions panel */}
-            <div className={styles.rhsPanel}>
-              <div className="panel-header">
-                <span className="panel-title">Discussions</span>
-                <a href="#" className={styles.viewMore}>View More »</a>
-              </div>
-              <div>
-                {sideDiscussions.map(d => (
-                  <div key={d.id} className={styles.discItem}>
-                    <div className={styles.discEntity}>{d.entity}</div>
-                    <div className={styles.discTitle}>{d.title}</div>
-                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: 7, marginBottom: 4 }}>
-                      <div style={{ width: 22, height: 22, borderRadius: '50%', background: `linear-gradient(135deg, ${d.author.gradientFrom}, ${d.author.gradientTo})`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 7.5, fontWeight: 700, color: '#fff', flexShrink: 0, marginTop: 1 }}>{d.author.initials}</div>
-                      <div>
-                        <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text-primary)' }}>{d.author.name}</div>
-                        <div style={{ fontSize: 10, color: 'var(--text-muted)' }}>{d.authorSpec}</div>
-                      </div>
-                    </div>
-                    <div className={styles.discBody}>{d.body}</div>
-                    <div className={styles.discFooter}>
-                      <button className={styles.discActionBtn}>
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                      </button>
-                      <button className={styles.discActionBtn}>
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/></svg>
-                        {d.likes}
-                      </button>
-                      <button className={styles.discActionBtn}>
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-                      </button>
-                      <span className={styles.discTime}>
-                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                        {d.time}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            {/* Discussions widget — left col */}
+            <DiscussionsWidget />
 
+            {/* Widgets column — right col */}
+            <div className={styles.widgetsCol}>
             {/* Related Providers panel */}
             <div className={styles.rhsPanel}>
               <div className="panel-header">
@@ -293,6 +261,7 @@ export default function CollectionDetailPage() {
                 </div>
               ))}
             </div>
+            </div>{/* end widgetsCol */}
           </aside>
         </div>
       </div>

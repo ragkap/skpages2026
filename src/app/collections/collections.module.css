@@ -16,6 +16,14 @@
   background: rgba(255, 255, 255, 0.04);
 }
 
+/* ── Body row ─────────────────────────────────── */
+.body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
 /* ── Main content area ────────────────────────── */
 .content {
   flex: 1;
@@ -91,7 +99,7 @@
 /* ── Grid ────────────────────────────────────── */
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
 }
 

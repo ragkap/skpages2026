@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -10,7 +11,7 @@ const navLinks = [
   { href: '/watchlist', label: 'Watchlists' },
   { href: '/company/SIA', label: 'Company' },
   { href: '/collections', label: 'Collections' },
-  { href: '#', label: 'Tools' },
+  { href: '/tools', label: 'Tools' },
 ];
 
 export default function Navbar() {
@@ -33,10 +34,13 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <Link href="/" className="nav-logo">
-        <img
+        <Image
           src="https://sk-assets.s3.amazonaws.com/online-branding-manual/01-logotypes/curation-compass-box-full-colour-1000px.png"
           alt="Smartkarma"
           className="nav-logo-img"
+          width={120}
+          height={32}
+          unoptimized
         />
       </Link>
 
@@ -46,12 +50,6 @@ export default function Navbar() {
             {label}
           </Link>
         ))}
-        <a href="#" className="nav-link nav-link-more">
-          More
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-            <path d="m6 9 6 6 6-6"/>
-          </svg>
-        </a>
       </div>
 
       <div className="nav-search">
@@ -65,7 +63,7 @@ export default function Navbar() {
         </svg>
         <input
           type="text"
-          placeholder="Search insights, tickers, authors…"
+          placeholder="aSK or Search…"
           value={searchVal}
           onChange={e => setSearchVal(e.target.value)}
           onKeyDown={handleSearch}
