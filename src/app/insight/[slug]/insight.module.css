@@ -23,13 +23,14 @@
   overflow: hidden;
 }
 
-/* ── Center wrapper (centerCol + actionBar + discussions) ─ */
+/* ── Center wrapper (centerCol + actionBar) ─────── */
 .centerWrapper {
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  position: relative;
 }
 
 /* ── Inner row: centerCol + actionBar + discussions ─ */
@@ -80,6 +81,11 @@
   background: var(--bg-card);
   border-bottom: 1px solid var(--border);
   flex-shrink: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
 }
 
 .pinnedTitleText {
