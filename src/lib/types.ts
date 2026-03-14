@@ -107,3 +107,57 @@ export interface InsightCard {
   author: Author;
   views: number;
 }
+
+export interface InsightAuthor {
+  name: string;
+  initials: string;
+  gradientFrom: string;
+  gradientTo: string;
+  spec: string;
+  firm: string;
+  topBadge?: string;
+  tags: string[];
+  bio: string;
+  isFollowing: boolean;
+}
+
+export interface SmartScoreDimension {
+  label: string;
+  score: number;
+}
+
+export interface InsightStreamItem {
+  id: string;
+  sentiment: Sentiment;
+  title: string;
+  date: string;
+}
+
+export interface InsightDetail {
+  slug: string;
+  sentiment: Sentiment;
+  ticker: string;
+  title: string;
+  category: string;
+  views: number;
+  publishedAt: string;
+  smartTakes: string[];
+  executiveSummary: string[];
+  detailBlockquote: string;
+  bodyParagraphs: Array<{ type: 'p' | 'h3' | 'bullets'; text?: string; items?: string[] }>;
+  author: InsightAuthor;
+  entityName: string;
+  entityTicker: string;
+  price: string;
+  currency: string;
+  changePct: string;
+  direction: 'up' | 'down';
+  smartScore: number;
+  smartScoreDimensions: SmartScoreDimension[];
+  sentimentValue: number;
+  insightStream: InsightStreamItem[];
+  relatedEntities: Array<{ ticker: string; name: string; sentiment: Sentiment }>;
+  relatedInsights: Array<{ id: string; title: string; sentiment: Sentiment }>;
+  trendingCollections: string[];
+  trendingInsights: Array<{ id: string; title: string; views: number }>;
+}

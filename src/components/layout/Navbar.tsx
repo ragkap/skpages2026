@@ -12,6 +12,7 @@ const navLinks = [
   { href: '/company/SIA', label: 'Company' },
   { href: '/collections', label: 'Collections' },
   { href: '/tools', label: 'Tools' },
+  { href: '/insight/top-9-korean-multiomics', label: 'Insight' },
 ];
 
 export default function Navbar() {
@@ -28,6 +29,7 @@ export default function Navbar() {
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';
     if (href === '/company/SIA') return pathname.startsWith('/company');
+    if (href.startsWith('/insight/')) return pathname.startsWith('/insight');
     return pathname.startsWith(href);
   };
 
