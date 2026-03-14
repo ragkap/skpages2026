@@ -1,0 +1,193 @@
+/* ── Collections Page ───────────────────────────── */
+
+.sideNavItem {
+  display: flex;
+  align-items: center;
+  padding: 7px 10px;
+  border-radius: 5px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.13s;
+  text-decoration: none;
+  margin-bottom: 2px;
+}
+
+.sideNavItem:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ── Main content area ────────────────────────── */
+.content {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  background: var(--bg-base);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Top toggle tabs ──────────────────────────── */
+.topTabs {
+  display: flex;
+  gap: 6px;
+  padding: 14px 24px 12px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.topTab {
+  padding: 5px 16px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  transition: all 0.15s;
+}
+
+.topTab:hover {
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+.topTabActive {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ── Collections scrollable area ─────────────── */
+.collectionsArea {
+  flex: 1;
+  padding: 16px 24px 24px;
+}
+
+/* ── Section header with divider ─────────────── */
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.sectionTitle {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  flex-shrink: 0;
+}
+
+.sectionDivider {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── Grid ────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+/* ── Collection card ─────────────────────────── */
+.card {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  overflow: hidden;
+}
+
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: var(--bg-panel);
+}
+
+/* ── Cover image ──────────────────────────────── */
+.cardCover {
+  width: 56px;
+  min-width: 56px;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cardEmoji {
+  font-size: 24px;
+  line-height: 1;
+}
+
+/* ── Card info ────────────────────────────────── */
+.cardInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 11px 10px;
+  border-left: 1px solid rgba(255,255,255,0.06);
+}
+
+.cardName {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+.cardDesc {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+}
+
+/* ── Follow button ────────────────────────────── */
+.followBtn {
+  width: 28px;
+  height: 28px;
+  margin-right: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+
+.followBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.followBtnActive {
+  border-color: #22c55e;
+  background: #22c55e;
+  color: #fff;
+}
+
+.followBtnActive:hover {
+  border-color: #16a34a;
+  background: #16a34a;
+}

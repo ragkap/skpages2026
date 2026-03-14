@@ -1,0 +1,212 @@
+/* ── Tools Page ──────────────────────────────────── */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--bg-base);
+}
+
+/* ── Filter tab bar ──────────────────────────────── */
+.filterBar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-base);
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.filterTab {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  transition: all 0.13s;
+  white-space: nowrap;
+}
+
+.filterTab:hover {
+  border-color: rgba(255,255,255,0.15);
+  color: var(--text-primary);
+}
+
+.filterTabActive {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.filterTabIcon {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+/* ── Scrollable content ──────────────────────────── */
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Section ─────────────────────────────────────── */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sectionIcon {
+  font-size: 12px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.sectionLabel {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.7px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.sectionLine {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── Recently visited row ────────────────────────── */
+.recentRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.recentCard {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.13s, background 0.13s;
+  min-width: 180px;
+}
+
+.recentCard:hover {
+  border-color: rgba(255,255,255,0.14);
+  background: var(--bg-panel);
+}
+
+/* ── Tool grid ───────────────────────────────────── */
+.toolGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+/* ── Tool card ───────────────────────────────────── */
+.toolCard {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.13s, background 0.13s;
+}
+
+.toolCard:hover {
+  border-color: rgba(255,255,255,0.14);
+  background: var(--bg-panel);
+}
+
+/* ── Tool icon ───────────────────────────────────── */
+.toolIcon {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.toolIconText {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ── Tool info ───────────────────────────────────── */
+.toolInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.toolName {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.toolDesc {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── NEW badge ───────────────────────────────────── */
+.newBadge {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  font-size: 8.5px;
+  font-weight: 700;
+  color: #fff;
+  background: #7c3aed;
+  border-radius: 0 7px 0 5px;
+  padding: 2px 6px;
+  letter-spacing: 0.4px;
+  line-height: 1.4;
+}
