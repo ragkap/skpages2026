@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { feedItems } from '@/lib/mockData/feed';
 import FeedItem from '@/components/feed/FeedItem';
-import Avatar from '@/components/ui/Avatar';
+// import Avatar from '@/components/ui/Avatar';
 import styles from './collection.module.css';
 
 // Mock collection data
